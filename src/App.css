@@ -1,38 +1,145 @@
-.App {
+/* App.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 15px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+th {
+  background-color: #4CAF50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+td {
+  background-color: #fff;
+  transition: background-color 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+td:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.task-list div {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 4px;
+  color: #333;
+}
+
+.task-list div:hover {
+  background-color: #ffdddd;
+  color: #900;
+}
+
+.total-points {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+/* App.css */
+.overlay {
+  position: fixed; /* Ensure the overlay covers the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(50, 50, 50, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure the overlay is above other content */
+}
+
+.task-dialog {
+  position: relative; /* Dialog should be positioned relative to the overlay */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Dialog should be above the overlay */
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-header h2 {
+  margin-top: 0;
+}
+
+.close-button {
+  background-color: transparent; /* Transparent background */
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Font size for the close button */
+  padding-bottom: 20px;
+}
+
+.category-button {
+  background-color: #4CAF50; /* Match this color with your week schedule header */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width for better click area */
+  text-align: left; /* Align text to the left */
+}
+
+.category-button:hover {
+  background-color: #47944a; /* Darker shade for hover */
+}
+
+.task-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px; /* Indent tasks */
+}
+
+.task-button {
+  background-color: #6c757d; /* Different color for task buttons, can be adjusted */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-button:hover {
+  background-color: #5a6268; /* Darker shade for task buttons on hover */
+}
+
+.task-button:focus,
+.category-button:focus,
+.close-button:focus {
+  outline: none; /* Remove focus outline */
 }
