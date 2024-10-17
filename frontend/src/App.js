@@ -6,7 +6,7 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 import { roommates, daysOfWeek, predefinedTasks } from './conf';
 
-const socket = io('http://192.168.0.91:5000'); // Update with the backend server address
+const socket = io(); // Use relative path for WebSocket connection
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -28,7 +28,7 @@ const App = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://192.168.0.91:5000/tasks');
+      const response = await axios.get('/api/tasks'); // Use relative path for API requests
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -37,7 +37,7 @@ const App = () => {
 
   const addTask = async (task) => {
     try {
-      await axios.post('http://192.168.0.91:5000/tasks', { ...task, day: selectedCell.day, user: selectedCell.user });
+      await axios.post('/api/tasks', { ...task, day: selectedCell.day, user: selectedCell.user }); // Use relative path
       setSelectedCell(null);
     } catch (error) {
       console.error('Error adding task:', error);
@@ -46,7 +46,7 @@ const App = () => {
 
   const removeTask = async (taskToRemoveIndex) => {
     try {
-      await axios.delete(`http://192.168.0.91:5000/tasks/${taskToRemoveIndex}`);
+      await axios.delete(`/api/tasks/${taskToRemoveIndex}`); // Use relative path
     } catch (error) {
       console.error('Error removing task:', error);
     }
